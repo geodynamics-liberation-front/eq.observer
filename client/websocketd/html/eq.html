@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>websocketd count example</title>
+    <style>
+      #count {
+        font: bold 150px arial;
+        margin: auto;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+    <script type="text/javascript" src="../smoothie.js"></script>
+    <script type="text/javascript">
+	var series = new TimeSeries();
+	var ws = null;
+	var chart = null;
+
+
+	function init() {
+		chart = new SmoothieChart();
+		chart.addTimeSeries(series, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 });
+		chart.streamTo(document.getElementById("chart"), 500);
+
+		ws = new WebSocket('ws://' + (location.host ? location.host : "localhost:8080") + "/readAccelData.py");
+		ws.onopen = function() {
+			document.body.style.backgroundColor = '#cfc';
+		};
+		ws.onclose = function() {
+			document.body.style.backgroundColor = null;
+		};
+		ws.onmessage = function(event) {
+			var o = JSON.parse( event.data ) 
+			series.append(new Date(o.t), o.z);
+		};
+	}
+    </script>
+  </head>
+  <body>
+
+    <canvas id="chart" width="400" height="100"></canvas>
+
+    <script>
+      init();
+    </script>
+
+  </body>
+</html>
