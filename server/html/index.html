@@ -5,6 +5,18 @@
 		<link href="https://fonts.googleapis.com/css?family=Fauna+One|Libre+Baskerville|Montserrat" rel="stylesheet">
 		<link href="style.css" rel="stylesheet">
 		<link rel="icon" href="eqo.png">
+        <script src="script.js"></script>
+        <script>
+function init() {
+    console.log("init()")
+    // Smoothe scroll the internal links
+    var internalLinks = document.querySelectorAll("header a[href^='#'")
+    for( var i=0; i<internalLinks.length; i++ ) {
+        smoothScroll(internalLinks[i]);
+    }
+}
+document.addEventListener("DOMContentLoaded", init);
+        </script>
 	</head>
 	<body>
 		<header>
