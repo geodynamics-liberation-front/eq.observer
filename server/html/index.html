@@ -5,6 +5,9 @@
 		<link href="https://fonts.googleapis.com/css?family=Fauna+One|Libre+Baskerville|Montserrat" rel="stylesheet">
 		<link href="style.css" rel="stylesheet">
 		<link rel="icon" href="eqo.png">
+		<!-- Place this tag in your head or just before your close body tag. -->
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
+		<script src="https://apis.google.com/js/platform.js"></script>
         <script src="script.js"></script>
         <script>
 function init() {
@@ -19,6 +22,20 @@ document.addEventListener("DOMContentLoaded", init);
         </script>
 	</head>
 	<body>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+console.log('facebook');
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+console.log(js)
+console.log(fjs)
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&autoLogAppEvents=1&version=v2.12&appId=200608786672145';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 		<header>
 			<h1>eq.Observer</h1>
 			<ul>
@@ -86,15 +103,33 @@ document.addEventListener("DOMContentLoaded", init);
 			</p>
 		</section>
 		<footer>
-<p>
-	A project of the <a href="therealglf.org">Geodynamics Liberation Front</a>
-</p>
-<p>
-			<a href="https://thenounproject.com" target="_blank">Noun Project</a> Icons:
-Globe Created by Adrien Coquet;
-Rocket Created by Delwar Hossain;
-Download Created by Antar;
-</p>
+			<div class="buttons">
+				<div class="button">
+					<a class="github-button" href="https://github.com/geodynamics-liberation-front/eq.observer" data-size="large" data-show-count="true" aria-label="Star geodynamics-liberation-front/eq.observer on GitHub">Star</a>
+				</div>
+				<div class="button">
+					<div class="fb-like" 
+						data-href="https://www.facebook.com/eq.observer" 
+						data-layout="box_count" 
+						data-action="like" 
+						data-size="small" 
+						data-show-faces="false" 
+						data-share="true">
+					</div>
+				</div>
+				<div class="button">
+					<div class="g-ytsubscribe" data-channelid="UCVb_Q0oqVor4OvCIAbEuecg" data-layout="default" data-count="default"></div>
+				</div>
+			</div>
+			<p>
+				A project of the <a href="http://therealglf.org">Geodynamics Liberation Front</a>
+			</p>
+			<p>
+						<a href="https://thenounproject.com" target="_blank">Noun Project</a> Icons:
+			Globe Created by Adrien Coquet;
+			Rocket Created by Delwar Hossain;
+			Download Created by Antar;
+			</p>
 		</footer>
 	</body>
 </html>

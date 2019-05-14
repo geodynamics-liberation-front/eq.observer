@@ -140,3 +140,15 @@ section {
 	margin-bottom: 100px;
 }
 
+.buttons {
+	height: 70px;	
+}
+
+.buttons  > .button {
+	vertical-align: top;
+	position: relative;
+	top: 50%;
+	display: inline-block;
+	transform: translateY(-50%);
+}
+	
