@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Raspbian images
+pi-image/*.img
+pi-image/*.zip
+pi-image/mnt
+
+
 # C extensions
 *.so
 
