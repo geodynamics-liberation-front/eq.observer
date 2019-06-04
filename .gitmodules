@@ -2,3 +2,7 @@
 	path = pi-image/qemu-rpi-kernel
 	url = https://github.com/dhruvvyas90/qemu-rpi-kernel.git
 	branch = master
+[submodule "python/smbus2"]
+	path = python/smbus2
+	url = https://github.com/kplindegaard/smbus2.git
+	branch = master
