@@ -264,7 +264,7 @@ if __name__=="__main__":
    
     # mount needs an image file
     if "mount" in commands and not image_file:
-        help("Can't read image file "+image_file)
+        help("No image file specified")
 
     vars["commands"]=commands
     try:
