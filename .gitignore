@@ -8,6 +8,8 @@ pi-image/*.img
 pi-image/*.zip
 pi-image/mnt
 
+# Vim swaps
+.*.swp
 
 # C extensions
 *.so
