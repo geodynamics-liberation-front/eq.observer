@@ -1,0 +1,4 @@
+[submodule "pi-image/qemu-rpi-kernel"]
+	path = pi-image/qemu-rpi-kernel
+	url = https://github.com/dhruvvyas90/qemu-rpi-kernel.git
+	branch = master
