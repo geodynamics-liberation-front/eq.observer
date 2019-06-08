@@ -39,6 +39,7 @@ header {
 	width: 100%;
 	background-color: white;
 	opacity: 0.9;
+	z-index: 99;
 }
 
 header h1 {
