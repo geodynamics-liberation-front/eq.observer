@@ -2,3 +2,7 @@
 	path = pi-image/qemu-rpi-kernel
 	url = https://github.com/dhruvvyas90/qemu-rpi-kernel.git
 	branch = master
+[submodule "wiki"]
+	path = wiki
+	url = git@github.com:geodynamics-liberation-front/eq.observer.wiki.git
+	branch = master
