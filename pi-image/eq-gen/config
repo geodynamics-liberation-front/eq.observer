@@ -1,0 +1,25 @@
+IMG_NAME=Observian
+FIRST_USER_NAME=eq
+FIRST_USER_PASS=observer
+
+APT_PROXY=http://tyr:3142
+STAGE_LIST="stage0 stage1 stage2 stageeq"
+
+# Uncomment to continue an interrupted build
+# CONTINUE=1
+
+# Uncomment to preserve the docker container (useful during development)
+# PRESERVE_CONTAINER=1
+
+export BLUEZ_PACKAGE=bluez_5.50-1_armhf.deb
+export BLUEZ_URL="http://www.kernel.org/pub/linux/bluetooth/bluez-5.50.tar.xz"
+export BLUEZ_TAR=bluez-5.50.tar.xz
+export BLUEZ_DIR=bluez-5.50
+
+# Uncomment and set to configure wifi (useful during development)
+#WPA_ESSID=
+#WPA_PASSWORD=
+#WPA_COUNTRY=
+
+# Uncomment to enable SSH (useful during development)
+#ENABLE_SSH=1
