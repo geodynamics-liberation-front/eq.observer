@@ -1,5 +1,12 @@
 # Project wiki
 wiki/
+containers/
+.idea/
+# exhuberant ctags
+tags
+# flake8
+tox.ini
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

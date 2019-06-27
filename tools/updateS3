@@ -1,0 +1,3 @@
+#!/bin/bash
+
+aws --profile eq.observer s3 sync html/ s3://eq.observer/
