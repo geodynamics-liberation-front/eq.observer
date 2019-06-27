@@ -2,3 +2,6 @@
 	path = pi-image/qemu-rpi-kernel
 	url = https://github.com/dhruvvyas90/qemu-rpi-kernel.git
 	branch = master
+[submodule "pi-image/pi-gen"]
+	path = pi-image/pi-gen
+	url = https://github.com/RPi-Distro/pi-gen.git
