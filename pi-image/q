@@ -1,0 +1,12 @@
+#/bin/bash
+IMAGE=pi-gen/deploy/2019-06-11-Observian-lite-qemu.img
+
+qemu-system-arm  \
+	-kernel qemu-rpi-kernel/kernel-qemu-4.14.79-stretch  \
+	-cpu arm1176 -m 256  \
+	-M versatilepb  \
+	-dtb qemu-rpi-kernel/versatile-pb.dtb  \
+	-serial stdio  \
+	-append "root=/dev/sda2 rootfstype=ext4 rw"  \
+	-drive index=0,media=disk,file=${IMAGE} \
+	-no-reboot -display none

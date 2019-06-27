@@ -1,0 +1,22 @@
+--- a/rootfs/etc/dbus-1/system.d/bluetooth.conf
++++ b/rootfs/etc/dbus-1/system.d/bluetooth.conf
+@@ -20,6 +20,19 @@
+     <allow send_interface="org.freedesktop.DBus.ObjectManager"/>
+     <allow send_interface="org.freedesktop.DBus.Properties"/>
+   </policy>
++  
++  <policy user="eq">
++    <allow send_destination="org.bluez"/>
++    <allow send_interface="org.bluez.Agent1"/>
++    <allow send_interface="org.bluez.MediaEndpoint1"/>
++    <allow send_interface="org.bluez.MediaPlayer1"/>
++    <allow send_interface="org.bluez.Profile1"/>
++    <allow send_interface="org.bluez.GattCharacteristic1"/>
++    <allow send_interface="org.bluez.GattDescriptor1"/>
++    <allow send_interface="org.bluez.LEAdvertisement1"/>
++    <allow send_interface="org.freedesktop.DBus.ObjectManager"/>
++    <allow send_interface="org.freedesktop.DBus.Properties"/>
++  </policy>
+ 
+   <policy at_console="true">
+     <allow send_destination="org.bluez"/>

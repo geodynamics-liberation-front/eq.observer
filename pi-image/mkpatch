@@ -1,0 +1,4 @@
+#!/bin/bash
+
+FILE=$1
+diff -u --label a/${FILE} --label b/${FILE} mnt/${FILE} /media/robert/${FILE}

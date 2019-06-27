@@ -1,0 +1,7 @@
+--- a/rootfs/etc/modules
++++ b/rootfs/etc/modules
+@@ -4,3 +4,4 @@
+ # at boot time, one per line. Lines beginning with "#" are ignored.
+ 
+ i2c-dev
++btusb

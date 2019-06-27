@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Cleaning pi-gen"
+pushd eq-gen > /dev/null
+for f in $(find * -depth); do 
+	pifile=../pi-gen/$f
+	echo $pifile
+	if [[ -f "$pifile" || ( -d "$pifile" && -z "$(ls -A ${pifile})" ) ]]; then
+		rm -rv $pifile
+	fi
+done
+popd > /dev/null
+pushd pi-gen > /dev/null
+git clean -fd
+popd > /dev/null
+

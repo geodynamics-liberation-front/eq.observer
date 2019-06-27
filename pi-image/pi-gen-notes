@@ -1,0 +1,6 @@
+# http://kmdouglass.github.io/posts/create-a-custom-raspbian-image-with-pi-gen-part-1/
+# Prerequest
+# in pi-gen dir
+echo "IMG_NAME=Observian" > config
+# binfmt-support required for docker
+sudo apt install binfmt-support

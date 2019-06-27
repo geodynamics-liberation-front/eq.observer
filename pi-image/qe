@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+
+# Wait enough (forever) until a long-time boot
+set timeout -1
+
+# Start the guest VM
+spawn -ignore HUP qemu-system-arm -kernel qemu-rpi-kernel/kernel-qemu-4.14.79-stretch -cpu arm1176 -m 256 -M versatilepb -dtb qemu-rpi-kernel/versatile-pb.dtb -serial stdio -append "root=/dev/sda2 rootfstype=ext4 rw" -drive index=0,media=disk,file=2019-04-08-raspbian-stretch-lite.img -no-reboot -display none
+
+expect "login: "
+send "pi\n"
+
+expect "Password: "
+send "raspberry\n"
+
+expect "$ "
+send "sudo apt-get install -y i2c-tools libi2c-dev\n"
+
+expect "$ "
+send "sync\n"
+expect "$ "
+send "sync\n"
+expect "$ "
+send "sync\n"
+
+expect "$ "
+send "sudo shutdown -h now\n"
