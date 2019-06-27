@@ -34,7 +34,7 @@ def writeAccelData(bus):
             
     end = time.time()
     f.close()
-    print("Wrote 1000 records in %f seconds"%(end-start))
+    print(("Wrote 1000 records in %f seconds"%(end-start)))
 
 def readAccelData(file_name = None, dir_name="."):
     if file_name == None:
