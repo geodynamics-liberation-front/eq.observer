@@ -1,0 +1,179 @@
+<!DOCTYPE  html>
+<html>
+	<head>
+		<title>eq.Observer</title>
+		<link href="https://fonts.googleapis.com/css?family=Fauna+One|Libre+Baskerville|Montserrat" rel="stylesheet">
+		<link rel="icon" href="eqo.png">
+        <script src="script.js"></script>
+        <script>
+class EqoApplication {
+    constructor() {
+        this.EQ_OBSERVER_SERVICE_UUID="12345678-1234-5678-1234-56789abc0010"
+        navigator.bluetooth.requestDevice(
+                {
+                    filters: [{services: [EQ_OBSERVER_SERVICE_UUID]}],
+                })
+            .then(device => {
+                log('Connecting to GATT Server...');
+                this.device = device
+                return device.gatt.connect();
+            })
+            .then(server => {
+                log('Getting Service...');
+                this.GATTServer = server
+                return server.getPrimaryService(EQ_OBSERVER_SERVICE_UUID);
+            })
+            .then(service => {
+                this.service = service
+                log("Service connection established")
+            })
+            .catch(error => {
+                log('Argh! ' + error);
+            });
+    }
+
+    get service() {
+        log('Requesting Bluetooth Device...');
+        log(this.EQ_OBSERVER_SERVICE_UUID)
+        if( this._service ) {
+            await navigator.bluetooth.requestDevice(
+                {
+                    filters: [{services: [EQ_OBSERVER_SERVICE_UUID]}],
+                })
+            .then(device => {
+                log('Connecting to GATT Server...');
+                this.device = device
+                return device.gatt.connect();
+            })
+            .then(server => {
+                log('Getting Service...');
+                this.GATTServer = server
+                return server.getPrimaryService(EQ_OBSERVER_SERVICE_UUID);
+            })
+            .then(service => {
+                this.service = service
+                log("Service connection established")
+            })
+            .catch(error => {
+                log('Argh! ' + error);
+            });
+        } 
+        return this._service
+
+    }
+
+
+    getCharacteristics() {
+        log('Getting Characteristics...');
+        this.service.getCharacteristics()
+            .then(characteristics => {
+                log('> Characteristics: ' +
+                characteristics.map(c => c.uuid).join('\n' + ' '.repeat(19)));
+            })
+    }
+
+    getCharacteristic(uuid) {
+        log('Getting Characteristic '+uuid+'...')
+        return this.service.getCharacteristic(uuid)
+        .then(characteristic => {
+            log('> Characteristic UUID:  ' + characteristic.uuid)
+            log('> Broadcast:            ' + characteristic.properties.broadcast)
+            log('> Read:                 ' + characteristic.properties.read)
+            log('> Write w/o response:   ' +
+                characteristic.properties.writeWithoutResponse)
+            log('> Write:                ' + characteristic.properties.write)
+            log('> Notify:               ' + characteristic.properties.notify)
+            log('> Indicate:             ' + characteristic.properties.indicate)
+            log('> Signed Write:         ' +
+                characteristic.properties.authenticatedSignedWrites)
+            log('> Queued Write:         ' + characteristic.properties.reliableWrite)
+            log('> Writable Auxiliaries: ' +
+                characteristic.properties.writableAuxiliaries)
+            return characteristic
+        })
+        .catch(error => {
+            log('Argh! ' + error)
+        })
+    }
+
+    readStringCharacteristic(uuid) {
+        return this.getCharacteristic(uuid).then(characteristic => {
+            log('Got Characteristic '+characteristic+'...')
+            return characteristic.readValue()
+        }).then(value => {
+            return new TextDecoder("utf-6").decode(
+                new Uint8Array(value.buffer,
+                               value.byteOffset,
+                               value.byteLength));
+        })
+    }
+
+    readCharacteristic(uuid) {
+        log('Read Characteristic '+uuid+'...')
+        return this.getCharacteristic(uuid).then(characteristic => {
+            log('Got Characteristic '+characteristic+'...')
+            return characteristic.readValue()
+        }
+        ).then(value => {
+            log('value')
+            console.log(value)
+            console.log(value.byteLength)
+            console.log(value.byteOffset)
+            return value
+        })
+    }
+}
+
+function init() {
+    console.log("init()")
+    let btn = document.querySelector("button")
+    let eqo = new EqoApplication()
+
+    btn.addEventListener("click",function() { eqo.pair() } )
+}
+
+function log(s) {
+    console.log(s);
+}
+
+
+document.addEventListener("DOMContentLoaded", init);
+        </script>
+<style>
+@keyframes loader {
+    from{background-position: 0px;}
+    to{background-position: -424px;}
+}
+
+#loader {
+    background-image: url("1906_seismo_got.svg");
+    height:  64px;
+    margin: auto;
+    background-position: 0px; /* Center the image */
+    background-repeat: repeat-x; /* Do not repeat the image */
+    animation-name: loader;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+/*    display: none; */
+}
+
+button{
+    background-color: #61e0fa;
+    width: 50vw;
+    height: 8vw;
+    margin: auto;
+    display: block;
+    font-size: 28px;
+    font-family: 'Montserrat', sans-serif;
+    border: 0px solid black;
+    border-radius: 4vw;
+}
+
+</style
+	</head>
+	<body>
+        <button>Pair EQ Observer</button>
+        <div id="loader"/>
+	</body>
+</html>
